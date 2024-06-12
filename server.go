@@ -14,6 +14,15 @@ import (
     "time"
 )
 
+const (
+	worldSizeX          = 1000
+	worldSizeY          = 1000
+	autoModeDurationSec = 120
+	pokemonSpawnRate    = 1 * time.Minute
+	pokemonDespawnTime  = 5 * time.Minute
+	maxPokemonPerPlayer = 200
+)
+
 type Pokemon struct {
     Name           string   `json:"name"`
     Type           []string `json:"type"`
