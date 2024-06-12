@@ -245,7 +245,7 @@ func handleConnection(conn net.Conn, pokedex []Pokemon, clients map[net.Conn]*Cl
         fmt.Fprintf(conn, "%d. %s (%v)\n", i+1, p.Name, p.Type)
     }
     for i := 0; i < 3; i++ {
-        fmt.Fprintln(conn, "Enter number for Pokémon: ")
+        fmt.Fprint(conn, "Enter number for Pokémon: ")
         input, err := client.reader.ReadString('\n')
         if err != nil {
             fmt.Println("Error reading from client:", err)
