@@ -1,0 +1,75 @@
+{
+    "PlayerID": "player123",
+    "Position": {
+      "X": 200,
+      "Y": 450
+    },
+    "AutoMode": {
+      "Status": true,
+      "Duration": 120,
+      "StartTime": "2024-06-15T14:30:00Z"
+    },
+    "Team": [
+      {
+        "Name": "Pikachu",
+        "Type": ["Electric"],
+        "HP": 35,
+        "BaseExp": 112,
+        "Attack": 55,
+        "Defense": 40,
+        "Speed": 90,
+        "SpecialAttack": 50,
+        "SpecialDefense": 50,
+        "Level": 10,
+        "AccumExp": 1500,
+        "EV": 1.2
+      },
+      {
+        "Name": "Bulbasaur",
+        "Type": ["Grass", "Poison"],
+        "HP": 45,
+        "BaseExp": 64,
+        "Attack": 49,
+        "Defense": 49,
+        "Speed": 45,
+        "SpecialAttack": 65,
+        "SpecialDefense": 65,
+        "Level": 12,
+        "AccumExp": 1800,
+        "EV": 1.5
+      }
+    ],
+    "CapturedPokemon": [
+      {
+        "Name": "Charmander",
+        "Type": ["Fire"],
+        "HP": 39,
+        "BaseExp": 62,
+        "Attack": 52,
+        "Defense": 43,
+        "Speed": 65,
+        "SpecialAttack": 60,
+        "SpecialDefense": 50,
+        "Level": 5,
+        "AccumExp": 600,
+        "EV": 0.8
+      }
+
+    ],
+    "BattleHistory": [
+      {
+        "OpponentID": "player456",
+        "Result": "win",
+        "ExperienceGained": 200,
+        "Timestamp": "2024-06-14T12:45:00Z"
+      },
+      {
+        "OpponentID": "player789",
+        "Result": "loss",
+        "ExperienceGained": 100,
+        "Timestamp": "2024-06-13T15:30:00Z"
+      }
+
+    ]
+  }
+  

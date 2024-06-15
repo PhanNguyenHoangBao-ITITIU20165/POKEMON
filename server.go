@@ -15,6 +15,8 @@ import (
     "time"
 )
 
+var pokeworld *Pokeworld
+
 const (
 	worldSizeX          = 1000
 	worldSizeY          = 1000
@@ -36,7 +38,8 @@ type Pokemon struct {
     SpecialDefense int      `json:"special_defense"`
     Level          int      `json:"level"`
     AccumExp       int      `json:"accum_exp"`
-    EV             float64  `json:"ev"`    
+    EV             float64  `json:"ev"`  
+    Owner          *Client  
 }
 
 
@@ -441,7 +444,9 @@ func (pw *Pokeworld) handleBattle(client1, client2 *Client) {
 
     // 1. Choose Active Pokémon
     client1Active := client1.chooseActivePokemon()
+    client1Active.Owner = client1 // Set the owner for the active Pokemon
     client2Active := client2.chooseActivePokemon()
+    client2Active.Owner = client2
 
     // 2. Battle Loop
     for client1Active != nil && client2Active != nil {
@@ -458,7 +463,7 @@ func (pw *Pokeworld) handleBattle(client1, client2 *Client) {
 
         // Check if Defender Fainted
         if defender.HP <= 0 {
-            fmt.Fprintf(defender.Owner.Conn, "Your %s fainted!\n", defender.Name)
+            fmt.Fprintf(defender.Owner.conn, "Your %s fainted!\n", defender.Name)
             defender = defender.Owner.chooseActivePokemon() // Choose a new Pokémon
         }
 
@@ -477,19 +482,15 @@ func (pw *Pokeworld) handleBattle(client1, client2 *Client) {
 }
 
 func (c *Client) chooseActivePokemon() *Pokemon {
-    // ... (Logic to let the player choose from their team)
-    // For example, send a list of Pokémon to the client and wait for their choice
     return nil // Placeholder
 }
 
 func (c *Client) chooseAttack() int {
-    // ... (Logic to let the player choose an attack)
-    // For example, send attack options to the client and wait for their choice
     return 0 // Placeholder
 }
 
 func (p *Pokemon) calculateDamage(defender *Pokemon, attackChoice int) int {
-    // ... (Use existing damage calculation functions based on attackChoice)
+
     return 0 // Placeholder
 }
 
@@ -499,11 +500,7 @@ func (pw *Pokeworld) announceWinner(winner, loser *Client) {
 }
 
 func (c *Client) updateExperience(defeatedPokemon *Pokemon, isWinner bool) {
-    // ... (Logic to update experience based on battle outcome and defeated Pokémon)
-    // Consider:
-    // - Base experience gain from defeatedPokemon.BaseExp
-    // - Multiplier based on level difference
-    // - Bonus for winning
+
 }
 
 
