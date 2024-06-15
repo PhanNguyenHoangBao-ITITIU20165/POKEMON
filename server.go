@@ -11,6 +11,7 @@ import (
     "os"
     "strconv"
     "strings"
+    "sync"
     "time"
 )
 
@@ -33,6 +34,30 @@ type Pokemon struct {
     Speed          int      `json:"speed"`
     SpecialAttack  int      `json:"special_attack"`
     SpecialDefense int      `json:"special_defense"`
+    Level          int      `json:"level"`
+    AccumExp       int      `json:"accum_exp"`
+    EV             float64  `json:"ev"`    
+}
+
+
+type Pokeworld struct {
+    grid          [][]*Pokemon
+    players       map[net.Conn]*Client
+    pokedex       []Pokemon
+
+    Width         int
+    Height        int
+    PokemonSpawnRate   time.Duration 
+    PokemonDespawnTime time.Duration
+    PokemonPerSpawn int
+    // Terrain      [][]int // Example if terrain is added
+
+    rng          *rand.Rand
+    NextSpawn    time.Time
+    despawnTimers  map[*Pokemon]*time.Timer
+    TotalPokemon    int
+
+    sync.Mutex
 }
 
 func fetchPokemonData(id int) (*Pokemon, error) {
@@ -70,6 +95,9 @@ func fetchPokemonData(id int) (*Pokemon, error) {
         Speed:          stats["speed"],
         SpecialAttack:  stats["special-attack"],
         SpecialDefense: stats["special-defense"],
+        Level:          1,
+        AccumExp:       0,
+        EV:             0.5, 
     }
 
     return pokemon, nil
@@ -148,12 +176,29 @@ type Client struct {
     isActive      bool
     activePokemon *Pokemon
     reader        *bufio.Reader
+    X, Y           int
+    AutoMode       bool
+    AutoUntil      time.Time
+    Reader         *bufio.Reader
+    sync.Mutex
 }
 
 type TypeEffectiveness struct {
     AttackingType string  `json:"attacking_type"`
     DefendingType string  `json:"defending_type"`
     Multiplier    float64 `json:"multiplier"`
+}
+
+type Player struct {
+    Conn         net.Conn
+    ID           string
+    X, Y         int
+    Team         []*Pokemon
+    Reader       *bufio.Reader
+    AutoMode     bool
+    AutoDuration time.Duration
+    StartTime    time.Time
+    sync.Mutex
 }
 
 // Type chart as a nested map for faster lookup
@@ -230,6 +275,235 @@ var typeChart = map[string]map[string]float64{
         "Fire": 0.5, "Poison": 0.5, "Fighting": 2.0, "Dragon": 2.0,
         "Dark": 2.0, "Steel": 0.5,
     },
+}
+
+func (pw *Pokeworld) spawnPokemonLoop() {
+    for {
+        time.Sleep(pokemonSpawnRate) // Spawn every minute
+        pw.spawnPokemon(50) // Spawn 50 Pokémon
+    }
+}
+
+func (pw *Pokeworld) spawnPokemon(numPokemon int) {
+    pw.Lock()
+    defer pw.Unlock()
+
+    for i := 0; i < numPokemon && pw.TotalPokemon < 50; i++ {
+        x, y := rand.Intn(worldSizeX), rand.Intn(worldSizeY)
+        var pokemon *Pokemon // Declare pokemon here
+
+        if pw.grid[x][y] == nil { 
+            pokemonIndex := rand.Intn(len(pw.pokedex))
+            pokemon = &pw.pokedex[pokemonIndex] 
+            pokemon.Level = rand.Intn(100) + 1
+            pokemon.EV = rand.Float64()*0.5 + 0.5
+            pw.grid[x][y] = pokemon
+
+            // ... (start a timer for despawning this Pokémon)
+            despawnTimer := time.AfterFunc(pw.PokemonDespawnTime, func() {
+                pw.Lock()
+                defer pw.Unlock()
+
+                // Ensure the Pokémon still exists before despawning
+                if pw.grid[x][y] == pokemon {
+                    pw.grid[x][y] = nil
+                    delete(pw.despawnTimers, pokemon)
+                    pw.TotalPokemon--
+                }
+            })
+            pw.despawnTimers[pokemon] = despawnTimer // Store the timer
+        }
+    }
+}
+
+
+func (pw *Pokeworld) handlePlayer(conn net.Conn) {
+    defer conn.Close()
+
+    client := &Client{
+        conn:   conn,
+        X:      rand.Intn(worldSizeX), 
+        Y:      rand.Intn(worldSizeY),
+        Reader: bufio.NewReader(conn),
+    }
+
+    // Choose team logic (same as before)
+
+    pw.Lock()
+    pw.players[conn] = client
+    pw.Unlock()
+
+    for {
+        // Handle Player Input for Movement
+        fmt.Fprintln(conn, "Enter direction (up/down/left/right/auto [duration in seconds]):")
+        input, err := client.Reader.ReadString('\n')
+        if err != nil {
+            log.Println("Error reading from client:", err)
+            return
+        }
+        input = strings.TrimSpace(input)
+
+        client.Lock()
+        pw.Lock() // Lock to ensure thread safety
+
+        switch input {
+        case "up":
+            if client.Y > 0 {
+                client.Y--
+            }
+        case "down":
+            if client.Y < worldSizeY-1 {
+                client.Y++
+            }
+        case "left":
+            if client.X > 0 {
+                client.X--
+            }
+        case "right":
+            if client.X < worldSizeX-1 {
+                client.X++
+            }
+        case "auto": // Toggle auto mode
+            parts := strings.Split(input, " ")
+            if len(parts) > 1 {
+                duration, _ := strconv.Atoi(parts[1])
+                if duration > 0 {
+                    client.AutoMode = !client.AutoMode // Toggle
+                    if client.AutoMode {
+                        client.AutoUntil = time.Now().Add(time.Duration(duration) * time.Second)
+                    }
+                }
+            }
+        }
+
+        var capturedPokemon *Pokemon // Declare outside the if statement
+        client.Lock()
+        pw.Lock() 
+        // Check for Pokemon Capture
+        if pokemon := pw.grid[client.X][client.Y]; pokemon != nil && len(client.team) < maxPokemonPerPlayer {
+            client.team = append(client.team, pokemon)
+            pw.grid[client.X][client.Y] = nil
+            pw.TotalPokemon--
+            
+            // Stop despawn timer
+            despawnTimer := pw.despawnTimers[pokemon]
+            delete(pw.despawnTimers, pokemon)
+            if despawnTimer != nil {
+                despawnTimer.Stop()
+            }
+            fmt.Fprintf(conn, "You caught a %s!\n", pokemon.Name)
+                
+            // ... (Notify the player that they caught a Pokemon)
+        }
+
+        // Check for Battles (Add more logic here)
+        for otherConn, otherClient := range pw.players {
+            if otherConn != conn && otherClient.X == client.X && otherClient.Y == client.Y {
+                pw.handleBattle(client, otherClient)
+                fmt.Fprintln(conn, "You encountered another player! Battle starting...")
+                fmt.Fprintln(otherConn, "You encountered another player! Battle starting...")
+                // ... (battle logic)
+            }
+        }
+
+        // Auto-Mode Logic
+        if client.AutoMode && time.Now().Before(client.AutoUntil) {
+            // Move randomly
+            directions := []string{"up", "down", "left", "right"}
+            randomDirection := directions[rand.Intn(len(directions))]
+            fmt.Fprintln(conn, "Auto move:", randomDirection) // Notify the player
+            // ... (update client.X and client.Y based on randomDirection)
+        } else if client.AutoMode { // Time's up, disable auto mode
+            client.AutoMode = false
+            fmt.Fprintln(conn, "Auto mode disabled")
+        }
+        
+        if capturedPokemon = pw.grid[client.X][client.Y]; capturedPokemon != nil {
+            client.team = append(client.team, capturedPokemon)
+            pw.grid[client.X][client.Y] = nil
+            pw.TotalPokemon--
+
+            // ... (stop despawn timer)
+
+            fmt.Fprintf(conn, "(Auto) You caught a %s!\n", capturedPokemon.Name) 
+        }
+        
+        pw.Unlock()
+        client.Unlock()
+
+        // Save Player Data (update JSON)
+        // ... (save client.Team and other data to the player's JSON file)
+    }
+}
+
+func (pw *Pokeworld) handleBattle(client1, client2 *Client) {
+    fmt.Println("Battle between:", client1.conn.RemoteAddr(), "and", client2.conn.RemoteAddr())
+
+    // 1. Choose Active Pokémon
+    client1Active := client1.chooseActivePokemon()
+    client2Active := client2.chooseActivePokemon()
+
+    // 2. Battle Loop
+    for client1Active != nil && client2Active != nil {
+        // Determine who goes first based on Speed
+        attacker, defender := client1Active, client2Active
+        if client2Active.Speed > client1Active.Speed {
+            attacker, defender = client2Active, client1Active
+        }
+
+        // Attacker's Turn
+        attackChoice := attacker.Owner.chooseAttack()
+        damage := attacker.calculateDamage(defender, attackChoice)
+        defender.HP -= damage
+
+        // Check if Defender Fainted
+        if defender.HP <= 0 {
+            fmt.Fprintf(defender.Owner.Conn, "Your %s fainted!\n", defender.Name)
+            defender = defender.Owner.chooseActivePokemon() // Choose a new Pokémon
+        }
+
+        // Switch Attacker and Defender for next turn
+        attacker, defender = defender, attacker 
+    }
+
+    // 3. Determine Winner and Update Experience
+    if client1Active == nil {
+        pw.announceWinner(client2, client1)
+        client2.updateExperience(client1Active, true) // Winner gains experience
+    } else {
+        pw.announceWinner(client1, client2)
+        client1.updateExperience(client2Active, true)
+    }
+}
+
+func (c *Client) chooseActivePokemon() *Pokemon {
+    // ... (Logic to let the player choose from their team)
+    // For example, send a list of Pokémon to the client and wait for their choice
+    return nil // Placeholder
+}
+
+func (c *Client) chooseAttack() int {
+    // ... (Logic to let the player choose an attack)
+    // For example, send attack options to the client and wait for their choice
+    return 0 // Placeholder
+}
+
+func (p *Pokemon) calculateDamage(defender *Pokemon, attackChoice int) int {
+    // ... (Use existing damage calculation functions based on attackChoice)
+    return 0 // Placeholder
+}
+
+func (pw *Pokeworld) announceWinner(winner, loser *Client) {
+    fmt.Fprintf(winner.conn, "You win the battle!\n")
+    fmt.Fprintf(loser.conn, "You lose the battle!\n")
+}
+
+func (c *Client) updateExperience(defeatedPokemon *Pokemon, isWinner bool) {
+    // ... (Logic to update experience based on battle outcome and defeated Pokémon)
+    // Consider:
+    // - Base experience gain from defeatedPokemon.BaseExp
+    // - Multiplier based on level difference
+    // - Bonus for winning
 }
 
 
@@ -371,6 +645,22 @@ func main() {
         log.Fatalf("Error decoding pokedex.json: %v", err)
     }
 
+    pokeworld := &Pokeworld{
+        grid:    make([][]*Pokemon, worldSizeX), // Initialize the grid
+        players: make(map[net.Conn]*Client),
+        pokedex: pokedex,
+        Width:  1000,
+        Height: 1000,
+        rng:     rand.New(rand.NewSource(time.Now().UnixNano())), // Seed the RNG
+        NextSpawn: time.Now().Add(pokeworld.PokemonSpawnRate), // First spawn time
+        despawnTimers: make(map[*Pokemon]*time.Timer),
+    }
+    for i := range pokeworld.grid {
+        pokeworld.grid[i] = make([]*Pokemon, worldSizeY)
+    }
+
+    go pokeworld.spawnPokemonLoop() // Start Pokémon spawning loop
+
     listener, err := net.Listen("tcp", ":8080")
     if err != nil {
         log.Fatalf("Error listening: %v", err)
@@ -388,6 +678,8 @@ func main() {
             log.Printf("Error accepting connection: %v", err)
             continue
         }
+
+        go pokeworld.handlePlayer(conn)
 
         if player1Conn == nil {
             fmt.Println("Player 1 connected!")
