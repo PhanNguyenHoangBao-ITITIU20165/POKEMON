@@ -11,7 +11,11 @@
     "defense": 49,
     "speed": 45,
     "special_attack": 65,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "ivysaur",
@@ -25,7 +29,11 @@
     "defense": 63,
     "speed": 60,
     "special_attack": 80,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "venusaur",
@@ -39,7 +47,11 @@
     "defense": 83,
     "speed": 80,
     "special_attack": 100,
-    "special_defense": 100
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "charmander",
@@ -52,7 +64,11 @@
     "defense": 43,
     "speed": 65,
     "special_attack": 60,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "charmeleon",
@@ -65,7 +81,11 @@
     "defense": 58,
     "speed": 80,
     "special_attack": 80,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "charizard",
@@ -79,7 +99,11 @@
     "defense": 78,
     "speed": 100,
     "special_attack": 109,
-    "special_defense": 85
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "squirtle",
@@ -92,7 +116,11 @@
     "defense": 65,
     "speed": 43,
     "special_attack": 50,
-    "special_defense": 64
+    "special_defense": 64,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "wartortle",
@@ -105,7 +133,11 @@
     "defense": 80,
     "speed": 58,
     "special_attack": 65,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "blastoise",
@@ -118,7 +150,11 @@
     "defense": 100,
     "speed": 78,
     "special_attack": 85,
-    "special_defense": 105
+    "special_defense": 105,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "caterpie",
@@ -131,7 +167,11 @@
     "defense": 35,
     "speed": 45,
     "special_attack": 20,
-    "special_defense": 20
+    "special_defense": 20,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "metapod",
@@ -144,7 +184,11 @@
     "defense": 55,
     "speed": 30,
     "special_attack": 25,
-    "special_defense": 25
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "butterfree",
@@ -158,7 +202,11 @@
     "defense": 50,
     "speed": 70,
     "special_attack": 90,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "weedle",
@@ -172,7 +220,11 @@
     "defense": 30,
     "speed": 50,
     "special_attack": 20,
-    "special_defense": 20
+    "special_defense": 20,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "kakuna",
@@ -186,7 +238,11 @@
     "defense": 50,
     "speed": 35,
     "special_attack": 25,
-    "special_defense": 25
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "beedrill",
@@ -200,7 +256,11 @@
     "defense": 40,
     "speed": 75,
     "special_attack": 45,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "pidgey",
@@ -214,7 +274,11 @@
     "defense": 40,
     "speed": 56,
     "special_attack": 35,
-    "special_defense": 35
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "pidgeotto",
@@ -228,7 +292,11 @@
     "defense": 55,
     "speed": 71,
     "special_attack": 50,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "pidgeot",
@@ -242,7 +310,11 @@
     "defense": 75,
     "speed": 101,
     "special_attack": 70,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "rattata",
@@ -255,7 +327,11 @@
     "defense": 35,
     "speed": 72,
     "special_attack": 25,
-    "special_defense": 35
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "raticate",
@@ -268,7 +344,11 @@
     "defense": 60,
     "speed": 97,
     "special_attack": 50,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "spearow",
@@ -282,7 +362,11 @@
     "defense": 30,
     "speed": 70,
     "special_attack": 31,
-    "special_defense": 31
+    "special_defense": 31,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "fearow",
@@ -296,7 +380,11 @@
     "defense": 65,
     "speed": 100,
     "special_attack": 61,
-    "special_defense": 61
+    "special_defense": 61,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "ekans",
@@ -309,7 +397,11 @@
     "defense": 44,
     "speed": 55,
     "special_attack": 40,
-    "special_defense": 54
+    "special_defense": 54,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "arbok",
@@ -322,7 +414,11 @@
     "defense": 69,
     "speed": 80,
     "special_attack": 65,
-    "special_defense": 79
+    "special_defense": 79,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "pikachu",
@@ -335,7 +431,11 @@
     "defense": 40,
     "speed": 90,
     "special_attack": 50,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "raichu",
@@ -348,7 +448,11 @@
     "defense": 55,
     "speed": 110,
     "special_attack": 90,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "sandshrew",
@@ -361,7 +465,11 @@
     "defense": 85,
     "speed": 40,
     "special_attack": 20,
-    "special_defense": 30
+    "special_defense": 30,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "sandslash",
@@ -374,7 +482,11 @@
     "defense": 110,
     "speed": 65,
     "special_attack": 45,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidoran-f",
@@ -387,7 +499,11 @@
     "defense": 52,
     "speed": 41,
     "special_attack": 40,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidorina",
@@ -400,7 +516,11 @@
     "defense": 67,
     "speed": 56,
     "special_attack": 55,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidoqueen",
@@ -414,7 +534,11 @@
     "defense": 87,
     "speed": 76,
     "special_attack": 75,
-    "special_defense": 85
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidoran-m",
@@ -427,7 +551,11 @@
     "defense": 40,
     "speed": 50,
     "special_attack": 40,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidorino",
@@ -440,7 +568,11 @@
     "defense": 57,
     "speed": 65,
     "special_attack": 55,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "nidoking",
@@ -454,7 +586,11 @@
     "defense": 77,
     "speed": 85,
     "special_attack": 85,
-    "special_defense": 75
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "clefairy",
@@ -467,7 +603,11 @@
     "defense": 48,
     "speed": 35,
     "special_attack": 60,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "clefable",
@@ -480,7 +620,11 @@
     "defense": 73,
     "speed": 60,
     "special_attack": 95,
-    "special_defense": 90
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "vulpix",
@@ -493,7 +637,11 @@
     "defense": 40,
     "speed": 65,
     "special_attack": 50,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "ninetales",
@@ -506,7 +654,11 @@
     "defense": 75,
     "speed": 100,
     "special_attack": 81,
-    "special_defense": 100
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "jigglypuff",
@@ -520,7 +672,11 @@
     "defense": 20,
     "speed": 20,
     "special_attack": 45,
-    "special_defense": 25
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "wigglytuff",
@@ -534,7 +690,11 @@
     "defense": 45,
     "speed": 45,
     "special_attack": 85,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "zubat",
@@ -548,7 +708,11 @@
     "defense": 35,
     "speed": 55,
     "special_attack": 30,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "golbat",
@@ -562,7 +726,11 @@
     "defense": 70,
     "speed": 90,
     "special_attack": 65,
-    "special_defense": 75
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "oddish",
@@ -576,7 +744,11 @@
     "defense": 55,
     "speed": 30,
     "special_attack": 75,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "gloom",
@@ -590,7 +762,11 @@
     "defense": 70,
     "speed": 40,
     "special_attack": 85,
-    "special_defense": 75
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "vileplume",
@@ -604,7 +780,11 @@
     "defense": 85,
     "speed": 50,
     "special_attack": 110,
-    "special_defense": 90
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "paras",
@@ -618,7 +798,11 @@
     "defense": 55,
     "speed": 25,
     "special_attack": 45,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "parasect",
@@ -632,7 +816,11 @@
     "defense": 80,
     "speed": 30,
     "special_attack": 60,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "venonat",
@@ -646,7 +834,11 @@
     "defense": 50,
     "speed": 45,
     "special_attack": 40,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "venomoth",
@@ -660,7 +852,11 @@
     "defense": 60,
     "speed": 90,
     "special_attack": 90,
-    "special_defense": 75
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "diglett",
@@ -673,7 +869,11 @@
     "defense": 25,
     "speed": 95,
     "special_attack": 35,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "dugtrio",
@@ -686,7 +886,11 @@
     "defense": 50,
     "speed": 120,
     "special_attack": 50,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "meowth",
@@ -699,7 +903,11 @@
     "defense": 35,
     "speed": 90,
     "special_attack": 40,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "persian",
@@ -712,7 +920,11 @@
     "defense": 60,
     "speed": 115,
     "special_attack": 65,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "psyduck",
@@ -725,7 +937,11 @@
     "defense": 48,
     "speed": 55,
     "special_attack": 65,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "golduck",
@@ -738,7 +954,11 @@
     "defense": 78,
     "speed": 85,
     "special_attack": 95,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "mankey",
@@ -751,7 +971,11 @@
     "defense": 35,
     "speed": 70,
     "special_attack": 35,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "primeape",
@@ -764,7 +988,11 @@
     "defense": 60,
     "speed": 95,
     "special_attack": 60,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "growlithe",
@@ -777,7 +1005,11 @@
     "defense": 45,
     "speed": 60,
     "special_attack": 70,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "arcanine",
@@ -790,7 +1022,11 @@
     "defense": 80,
     "speed": 95,
     "special_attack": 100,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "poliwag",
@@ -803,7 +1039,11 @@
     "defense": 40,
     "speed": 90,
     "special_attack": 40,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "poliwhirl",
@@ -816,7 +1056,11 @@
     "defense": 65,
     "speed": 90,
     "special_attack": 50,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "poliwrath",
@@ -830,7 +1074,11 @@
     "defense": 95,
     "speed": 70,
     "special_attack": 70,
-    "special_defense": 90
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "abra",
@@ -843,7 +1091,11 @@
     "defense": 15,
     "speed": 90,
     "special_attack": 105,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "kadabra",
@@ -856,7 +1108,11 @@
     "defense": 30,
     "speed": 105,
     "special_attack": 120,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "alakazam",
@@ -869,7 +1125,11 @@
     "defense": 45,
     "speed": 120,
     "special_attack": 135,
-    "special_defense": 95
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "machop",
@@ -882,7 +1142,11 @@
     "defense": 50,
     "speed": 35,
     "special_attack": 35,
-    "special_defense": 35
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "machoke",
@@ -895,7 +1159,11 @@
     "defense": 70,
     "speed": 45,
     "special_attack": 50,
-    "special_defense": 60
+    "special_defense": 60,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "machamp",
@@ -908,7 +1176,11 @@
     "defense": 80,
     "speed": 55,
     "special_attack": 65,
-    "special_defense": 85
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "bellsprout",
@@ -922,7 +1194,11 @@
     "defense": 35,
     "speed": 40,
     "special_attack": 70,
-    "special_defense": 30
+    "special_defense": 30,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "weepinbell",
@@ -936,7 +1212,11 @@
     "defense": 50,
     "speed": 55,
     "special_attack": 85,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "victreebel",
@@ -950,7 +1230,11 @@
     "defense": 65,
     "speed": 70,
     "special_attack": 100,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "tentacool",
@@ -964,7 +1248,11 @@
     "defense": 35,
     "speed": 70,
     "special_attack": 50,
-    "special_defense": 100
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "tentacruel",
@@ -978,7 +1266,11 @@
     "defense": 65,
     "speed": 100,
     "special_attack": 80,
-    "special_defense": 120
+    "special_defense": 120,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "geodude",
@@ -992,7 +1284,11 @@
     "defense": 100,
     "speed": 20,
     "special_attack": 30,
-    "special_defense": 30
+    "special_defense": 30,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "graveler",
@@ -1006,7 +1302,11 @@
     "defense": 115,
     "speed": 35,
     "special_attack": 45,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "golem",
@@ -1020,7 +1320,11 @@
     "defense": 130,
     "speed": 45,
     "special_attack": 55,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "ponyta",
@@ -1033,7 +1337,11 @@
     "defense": 55,
     "speed": 90,
     "special_attack": 65,
-    "special_defense": 65
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "rapidash",
@@ -1046,7 +1354,11 @@
     "defense": 70,
     "speed": 105,
     "special_attack": 80,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "slowpoke",
@@ -1060,7 +1372,11 @@
     "defense": 65,
     "speed": 15,
     "special_attack": 40,
-    "special_defense": 40
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "slowbro",
@@ -1074,7 +1390,11 @@
     "defense": 110,
     "speed": 30,
     "special_attack": 100,
-    "special_defense": 80
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "magnemite",
@@ -1088,7 +1408,11 @@
     "defense": 70,
     "speed": 45,
     "special_attack": 95,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "magneton",
@@ -1102,7 +1426,11 @@
     "defense": 95,
     "speed": 70,
     "special_attack": 120,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "farfetchd",
@@ -1116,7 +1444,11 @@
     "defense": 55,
     "speed": 60,
     "special_attack": 58,
-    "special_defense": 62
+    "special_defense": 62,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "doduo",
@@ -1130,7 +1462,11 @@
     "defense": 45,
     "speed": 75,
     "special_attack": 35,
-    "special_defense": 35
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "dodrio",
@@ -1144,7 +1480,11 @@
     "defense": 70,
     "speed": 110,
     "special_attack": 60,
-    "special_defense": 60
+    "special_defense": 60,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "seel",
@@ -1157,7 +1497,11 @@
     "defense": 55,
     "speed": 45,
     "special_attack": 45,
-    "special_defense": 70
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "dewgong",
@@ -1171,7 +1515,11 @@
     "defense": 80,
     "speed": 70,
     "special_attack": 70,
-    "special_defense": 95
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "grimer",
@@ -1184,7 +1532,11 @@
     "defense": 50,
     "speed": 25,
     "special_attack": 40,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "muk",
@@ -1197,7 +1549,11 @@
     "defense": 75,
     "speed": 50,
     "special_attack": 65,
-    "special_defense": 100
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "shellder",
@@ -1210,7 +1566,11 @@
     "defense": 100,
     "speed": 40,
     "special_attack": 45,
-    "special_defense": 25
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "cloyster",
@@ -1224,7 +1584,11 @@
     "defense": 180,
     "speed": 70,
     "special_attack": 85,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "gastly",
@@ -1238,7 +1602,11 @@
     "defense": 30,
     "speed": 80,
     "special_attack": 100,
-    "special_defense": 35
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "haunter",
@@ -1252,7 +1620,11 @@
     "defense": 45,
     "speed": 95,
     "special_attack": 115,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "gengar",
@@ -1266,7 +1638,11 @@
     "defense": 60,
     "speed": 110,
     "special_attack": 130,
-    "special_defense": 75
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "onix",
@@ -1280,7 +1656,11 @@
     "defense": 160,
     "speed": 70,
     "special_attack": 30,
-    "special_defense": 45
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "drowzee",
@@ -1293,7 +1673,11 @@
     "defense": 45,
     "speed": 42,
     "special_attack": 43,
-    "special_defense": 90
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "hypno",
@@ -1306,7 +1690,11 @@
     "defense": 70,
     "speed": 67,
     "special_attack": 73,
-    "special_defense": 115
+    "special_defense": 115,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "krabby",
@@ -1319,7 +1707,11 @@
     "defense": 90,
     "speed": 50,
     "special_attack": 25,
-    "special_defense": 25
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "kingler",
@@ -1332,7 +1724,11 @@
     "defense": 115,
     "speed": 75,
     "special_attack": 50,
-    "special_defense": 50
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   },
   {
     "name": "voltorb",
@@ -1345,6 +1741,1752 @@
     "defense": 50,
     "speed": 100,
     "special_attack": 55,
-    "special_defense": 55
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "electrode",
+    "type": [
+      "electric"
+    ],
+    "hp": 60,
+    "base_exp": 172,
+    "attack": 50,
+    "defense": 70,
+    "speed": 150,
+    "special_attack": 80,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "exeggcute",
+    "type": [
+      "grass",
+      "psychic"
+    ],
+    "hp": 60,
+    "base_exp": 65,
+    "attack": 40,
+    "defense": 80,
+    "speed": 40,
+    "special_attack": 60,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "exeggutor",
+    "type": [
+      "grass",
+      "psychic"
+    ],
+    "hp": 95,
+    "base_exp": 186,
+    "attack": 95,
+    "defense": 85,
+    "speed": 55,
+    "special_attack": 125,
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "cubone",
+    "type": [
+      "ground"
+    ],
+    "hp": 50,
+    "base_exp": 64,
+    "attack": 50,
+    "defense": 95,
+    "speed": 35,
+    "special_attack": 40,
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "marowak",
+    "type": [
+      "ground"
+    ],
+    "hp": 60,
+    "base_exp": 149,
+    "attack": 80,
+    "defense": 110,
+    "speed": 45,
+    "special_attack": 50,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "hitmonlee",
+    "type": [
+      "fighting"
+    ],
+    "hp": 50,
+    "base_exp": 159,
+    "attack": 120,
+    "defense": 53,
+    "speed": 87,
+    "special_attack": 35,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "hitmonchan",
+    "type": [
+      "fighting"
+    ],
+    "hp": 50,
+    "base_exp": 159,
+    "attack": 105,
+    "defense": 79,
+    "speed": 76,
+    "special_attack": 35,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "lickitung",
+    "type": [
+      "normal"
+    ],
+    "hp": 90,
+    "base_exp": 77,
+    "attack": 55,
+    "defense": 75,
+    "speed": 30,
+    "special_attack": 60,
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "koffing",
+    "type": [
+      "poison"
+    ],
+    "hp": 40,
+    "base_exp": 68,
+    "attack": 65,
+    "defense": 95,
+    "speed": 35,
+    "special_attack": 60,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "weezing",
+    "type": [
+      "poison"
+    ],
+    "hp": 65,
+    "base_exp": 172,
+    "attack": 90,
+    "defense": 120,
+    "speed": 60,
+    "special_attack": 85,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "rhyhorn",
+    "type": [
+      "ground",
+      "rock"
+    ],
+    "hp": 80,
+    "base_exp": 69,
+    "attack": 85,
+    "defense": 95,
+    "speed": 25,
+    "special_attack": 30,
+    "special_defense": 30,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "rhydon",
+    "type": [
+      "ground",
+      "rock"
+    ],
+    "hp": 105,
+    "base_exp": 170,
+    "attack": 130,
+    "defense": 120,
+    "speed": 40,
+    "special_attack": 45,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "chansey",
+    "type": [
+      "normal"
+    ],
+    "hp": 250,
+    "base_exp": 395,
+    "attack": 5,
+    "defense": 5,
+    "speed": 50,
+    "special_attack": 35,
+    "special_defense": 105,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "tangela",
+    "type": [
+      "grass"
+    ],
+    "hp": 65,
+    "base_exp": 87,
+    "attack": 55,
+    "defense": 115,
+    "speed": 60,
+    "special_attack": 100,
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "kangaskhan",
+    "type": [
+      "normal"
+    ],
+    "hp": 105,
+    "base_exp": 172,
+    "attack": 95,
+    "defense": 80,
+    "speed": 90,
+    "special_attack": 40,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "horsea",
+    "type": [
+      "water"
+    ],
+    "hp": 30,
+    "base_exp": 59,
+    "attack": 40,
+    "defense": 70,
+    "speed": 60,
+    "special_attack": 70,
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "seadra",
+    "type": [
+      "water"
+    ],
+    "hp": 55,
+    "base_exp": 154,
+    "attack": 65,
+    "defense": 95,
+    "speed": 85,
+    "special_attack": 95,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "goldeen",
+    "type": [
+      "water"
+    ],
+    "hp": 45,
+    "base_exp": 64,
+    "attack": 67,
+    "defense": 60,
+    "speed": 63,
+    "special_attack": 35,
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "seaking",
+    "type": [
+      "water"
+    ],
+    "hp": 80,
+    "base_exp": 158,
+    "attack": 92,
+    "defense": 65,
+    "speed": 68,
+    "special_attack": 65,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "staryu",
+    "type": [
+      "water"
+    ],
+    "hp": 30,
+    "base_exp": 68,
+    "attack": 45,
+    "defense": 55,
+    "speed": 85,
+    "special_attack": 70,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "starmie",
+    "type": [
+      "water",
+      "psychic"
+    ],
+    "hp": 60,
+    "base_exp": 182,
+    "attack": 75,
+    "defense": 85,
+    "speed": 115,
+    "special_attack": 100,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "mr-mime",
+    "type": [
+      "psychic",
+      "fairy"
+    ],
+    "hp": 40,
+    "base_exp": 161,
+    "attack": 45,
+    "defense": 65,
+    "speed": 90,
+    "special_attack": 100,
+    "special_defense": 120,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "scyther",
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "hp": 70,
+    "base_exp": 100,
+    "attack": 110,
+    "defense": 80,
+    "speed": 105,
+    "special_attack": 55,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "jynx",
+    "type": [
+      "ice",
+      "psychic"
+    ],
+    "hp": 65,
+    "base_exp": 159,
+    "attack": 50,
+    "defense": 35,
+    "speed": 95,
+    "special_attack": 115,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "electabuzz",
+    "type": [
+      "electric"
+    ],
+    "hp": 65,
+    "base_exp": 172,
+    "attack": 83,
+    "defense": 57,
+    "speed": 105,
+    "special_attack": 95,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "magmar",
+    "type": [
+      "fire"
+    ],
+    "hp": 65,
+    "base_exp": 173,
+    "attack": 95,
+    "defense": 57,
+    "speed": 93,
+    "special_attack": 100,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "pinsir",
+    "type": [
+      "bug"
+    ],
+    "hp": 65,
+    "base_exp": 175,
+    "attack": 125,
+    "defense": 100,
+    "speed": 85,
+    "special_attack": 55,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "tauros",
+    "type": [
+      "normal"
+    ],
+    "hp": 75,
+    "base_exp": 172,
+    "attack": 100,
+    "defense": 95,
+    "speed": 110,
+    "special_attack": 40,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "magikarp",
+    "type": [
+      "water"
+    ],
+    "hp": 20,
+    "base_exp": 40,
+    "attack": 10,
+    "defense": 55,
+    "speed": 80,
+    "special_attack": 15,
+    "special_defense": 20,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "gyarados",
+    "type": [
+      "water",
+      "flying"
+    ],
+    "hp": 95,
+    "base_exp": 189,
+    "attack": 125,
+    "defense": 79,
+    "speed": 81,
+    "special_attack": 60,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "lapras",
+    "type": [
+      "water",
+      "ice"
+    ],
+    "hp": 130,
+    "base_exp": 187,
+    "attack": 85,
+    "defense": 80,
+    "speed": 60,
+    "special_attack": 85,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "ditto",
+    "type": [
+      "normal"
+    ],
+    "hp": 48,
+    "base_exp": 101,
+    "attack": 48,
+    "defense": 48,
+    "speed": 48,
+    "special_attack": 48,
+    "special_defense": 48,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "eevee",
+    "type": [
+      "normal"
+    ],
+    "hp": 55,
+    "base_exp": 65,
+    "attack": 55,
+    "defense": 50,
+    "speed": 55,
+    "special_attack": 45,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "vaporeon",
+    "type": [
+      "water"
+    ],
+    "hp": 130,
+    "base_exp": 184,
+    "attack": 65,
+    "defense": 60,
+    "speed": 65,
+    "special_attack": 110,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "jolteon",
+    "type": [
+      "electric"
+    ],
+    "hp": 65,
+    "base_exp": 184,
+    "attack": 65,
+    "defense": 60,
+    "speed": 130,
+    "special_attack": 110,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "flareon",
+    "type": [
+      "fire"
+    ],
+    "hp": 65,
+    "base_exp": 184,
+    "attack": 130,
+    "defense": 60,
+    "speed": 65,
+    "special_attack": 95,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "porygon",
+    "type": [
+      "normal"
+    ],
+    "hp": 65,
+    "base_exp": 79,
+    "attack": 60,
+    "defense": 70,
+    "speed": 40,
+    "special_attack": 85,
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "omanyte",
+    "type": [
+      "rock",
+      "water"
+    ],
+    "hp": 35,
+    "base_exp": 71,
+    "attack": 40,
+    "defense": 100,
+    "speed": 35,
+    "special_attack": 90,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "omastar",
+    "type": [
+      "rock",
+      "water"
+    ],
+    "hp": 70,
+    "base_exp": 173,
+    "attack": 60,
+    "defense": 125,
+    "speed": 55,
+    "special_attack": 115,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "kabuto",
+    "type": [
+      "rock",
+      "water"
+    ],
+    "hp": 30,
+    "base_exp": 71,
+    "attack": 80,
+    "defense": 90,
+    "speed": 55,
+    "special_attack": 55,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "kabutops",
+    "type": [
+      "rock",
+      "water"
+    ],
+    "hp": 60,
+    "base_exp": 173,
+    "attack": 115,
+    "defense": 105,
+    "speed": 80,
+    "special_attack": 65,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "aerodactyl",
+    "type": [
+      "rock",
+      "flying"
+    ],
+    "hp": 80,
+    "base_exp": 180,
+    "attack": 105,
+    "defense": 65,
+    "speed": 130,
+    "special_attack": 60,
+    "special_defense": 75,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "snorlax",
+    "type": [
+      "normal"
+    ],
+    "hp": 160,
+    "base_exp": 189,
+    "attack": 110,
+    "defense": 65,
+    "speed": 30,
+    "special_attack": 65,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "articuno",
+    "type": [
+      "ice",
+      "flying"
+    ],
+    "hp": 90,
+    "base_exp": 290,
+    "attack": 85,
+    "defense": 100,
+    "speed": 85,
+    "special_attack": 95,
+    "special_defense": 125,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "zapdos",
+    "type": [
+      "electric",
+      "flying"
+    ],
+    "hp": 90,
+    "base_exp": 290,
+    "attack": 90,
+    "defense": 85,
+    "speed": 100,
+    "special_attack": 125,
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "moltres",
+    "type": [
+      "fire",
+      "flying"
+    ],
+    "hp": 90,
+    "base_exp": 290,
+    "attack": 100,
+    "defense": 90,
+    "speed": 90,
+    "special_attack": 125,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "dratini",
+    "type": [
+      "dragon"
+    ],
+    "hp": 41,
+    "base_exp": 60,
+    "attack": 64,
+    "defense": 45,
+    "speed": 50,
+    "special_attack": 50,
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "dragonair",
+    "type": [
+      "dragon"
+    ],
+    "hp": 61,
+    "base_exp": 147,
+    "attack": 84,
+    "defense": 65,
+    "speed": 70,
+    "special_attack": 70,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "dragonite",
+    "type": [
+      "dragon",
+      "flying"
+    ],
+    "hp": 91,
+    "base_exp": 300,
+    "attack": 134,
+    "defense": 95,
+    "speed": 80,
+    "special_attack": 100,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "mewtwo",
+    "type": [
+      "psychic"
+    ],
+    "hp": 106,
+    "base_exp": 340,
+    "attack": 110,
+    "defense": 90,
+    "speed": 130,
+    "special_attack": 154,
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "mew",
+    "type": [
+      "psychic"
+    ],
+    "hp": 100,
+    "base_exp": 300,
+    "attack": 100,
+    "defense": 100,
+    "speed": 100,
+    "special_attack": 100,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "chikorita",
+    "type": [
+      "grass"
+    ],
+    "hp": 45,
+    "base_exp": 64,
+    "attack": 49,
+    "defense": 65,
+    "speed": 45,
+    "special_attack": 49,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "bayleef",
+    "type": [
+      "grass"
+    ],
+    "hp": 60,
+    "base_exp": 142,
+    "attack": 62,
+    "defense": 80,
+    "speed": 60,
+    "special_attack": 63,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "meganium",
+    "type": [
+      "grass"
+    ],
+    "hp": 80,
+    "base_exp": 236,
+    "attack": 82,
+    "defense": 100,
+    "speed": 80,
+    "special_attack": 83,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "cyndaquil",
+    "type": [
+      "fire"
+    ],
+    "hp": 39,
+    "base_exp": 62,
+    "attack": 52,
+    "defense": 43,
+    "speed": 65,
+    "special_attack": 60,
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "quilava",
+    "type": [
+      "fire"
+    ],
+    "hp": 58,
+    "base_exp": 142,
+    "attack": 64,
+    "defense": 58,
+    "speed": 80,
+    "special_attack": 80,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "typhlosion",
+    "type": [
+      "fire"
+    ],
+    "hp": 78,
+    "base_exp": 240,
+    "attack": 84,
+    "defense": 78,
+    "speed": 100,
+    "special_attack": 109,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "totodile",
+    "type": [
+      "water"
+    ],
+    "hp": 50,
+    "base_exp": 63,
+    "attack": 65,
+    "defense": 64,
+    "speed": 43,
+    "special_attack": 44,
+    "special_defense": 48,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "croconaw",
+    "type": [
+      "water"
+    ],
+    "hp": 65,
+    "base_exp": 142,
+    "attack": 80,
+    "defense": 80,
+    "speed": 58,
+    "special_attack": 59,
+    "special_defense": 63,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "feraligatr",
+    "type": [
+      "water"
+    ],
+    "hp": 85,
+    "base_exp": 239,
+    "attack": 105,
+    "defense": 100,
+    "speed": 78,
+    "special_attack": 79,
+    "special_defense": 83,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "sentret",
+    "type": [
+      "normal"
+    ],
+    "hp": 35,
+    "base_exp": 43,
+    "attack": 46,
+    "defense": 34,
+    "speed": 20,
+    "special_attack": 35,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "furret",
+    "type": [
+      "normal"
+    ],
+    "hp": 85,
+    "base_exp": 145,
+    "attack": 76,
+    "defense": 64,
+    "speed": 90,
+    "special_attack": 45,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "hoothoot",
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "hp": 60,
+    "base_exp": 52,
+    "attack": 30,
+    "defense": 30,
+    "speed": 50,
+    "special_attack": 36,
+    "special_defense": 56,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "noctowl",
+    "type": [
+      "normal",
+      "flying"
+    ],
+    "hp": 100,
+    "base_exp": 158,
+    "attack": 50,
+    "defense": 50,
+    "speed": 70,
+    "special_attack": 86,
+    "special_defense": 96,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "ledyba",
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "hp": 40,
+    "base_exp": 53,
+    "attack": 20,
+    "defense": 30,
+    "speed": 55,
+    "special_attack": 40,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "ledian",
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "hp": 55,
+    "base_exp": 137,
+    "attack": 35,
+    "defense": 50,
+    "speed": 85,
+    "special_attack": 55,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "spinarak",
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "hp": 40,
+    "base_exp": 50,
+    "attack": 60,
+    "defense": 40,
+    "speed": 30,
+    "special_attack": 40,
+    "special_defense": 40,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "ariados",
+    "type": [
+      "bug",
+      "poison"
+    ],
+    "hp": 70,
+    "base_exp": 140,
+    "attack": 90,
+    "defense": 70,
+    "speed": 40,
+    "special_attack": 60,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "crobat",
+    "type": [
+      "poison",
+      "flying"
+    ],
+    "hp": 85,
+    "base_exp": 268,
+    "attack": 90,
+    "defense": 80,
+    "speed": 130,
+    "special_attack": 70,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "chinchou",
+    "type": [
+      "water",
+      "electric"
+    ],
+    "hp": 75,
+    "base_exp": 66,
+    "attack": 38,
+    "defense": 38,
+    "speed": 67,
+    "special_attack": 56,
+    "special_defense": 56,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "lanturn",
+    "type": [
+      "water",
+      "electric"
+    ],
+    "hp": 125,
+    "base_exp": 161,
+    "attack": 58,
+    "defense": 58,
+    "speed": 67,
+    "special_attack": 76,
+    "special_defense": 76,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "pichu",
+    "type": [
+      "electric"
+    ],
+    "hp": 20,
+    "base_exp": 41,
+    "attack": 40,
+    "defense": 15,
+    "speed": 60,
+    "special_attack": 35,
+    "special_defense": 35,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "cleffa",
+    "type": [
+      "fairy"
+    ],
+    "hp": 50,
+    "base_exp": 44,
+    "attack": 25,
+    "defense": 28,
+    "speed": 15,
+    "special_attack": 45,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "igglybuff",
+    "type": [
+      "normal",
+      "fairy"
+    ],
+    "hp": 90,
+    "base_exp": 42,
+    "attack": 30,
+    "defense": 15,
+    "speed": 15,
+    "special_attack": 40,
+    "special_defense": 20,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "togepi",
+    "type": [
+      "fairy"
+    ],
+    "hp": 35,
+    "base_exp": 49,
+    "attack": 20,
+    "defense": 65,
+    "speed": 20,
+    "special_attack": 40,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "togetic",
+    "type": [
+      "fairy",
+      "flying"
+    ],
+    "hp": 55,
+    "base_exp": 142,
+    "attack": 40,
+    "defense": 85,
+    "speed": 40,
+    "special_attack": 80,
+    "special_defense": 105,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "natu",
+    "type": [
+      "psychic",
+      "flying"
+    ],
+    "hp": 40,
+    "base_exp": 64,
+    "attack": 50,
+    "defense": 45,
+    "speed": 70,
+    "special_attack": 70,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "xatu",
+    "type": [
+      "psychic",
+      "flying"
+    ],
+    "hp": 65,
+    "base_exp": 165,
+    "attack": 75,
+    "defense": 70,
+    "speed": 95,
+    "special_attack": 95,
+    "special_defense": 70,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "mareep",
+    "type": [
+      "electric"
+    ],
+    "hp": 55,
+    "base_exp": 56,
+    "attack": 40,
+    "defense": 40,
+    "speed": 35,
+    "special_attack": 65,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "flaaffy",
+    "type": [
+      "electric"
+    ],
+    "hp": 70,
+    "base_exp": 128,
+    "attack": 55,
+    "defense": 55,
+    "speed": 45,
+    "special_attack": 80,
+    "special_defense": 60,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "ampharos",
+    "type": [
+      "electric"
+    ],
+    "hp": 90,
+    "base_exp": 230,
+    "attack": 75,
+    "defense": 85,
+    "speed": 55,
+    "special_attack": 115,
+    "special_defense": 90,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "bellossom",
+    "type": [
+      "grass"
+    ],
+    "hp": 75,
+    "base_exp": 245,
+    "attack": 80,
+    "defense": 95,
+    "speed": 50,
+    "special_attack": 90,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "marill",
+    "type": [
+      "water",
+      "fairy"
+    ],
+    "hp": 70,
+    "base_exp": 88,
+    "attack": 20,
+    "defense": 50,
+    "speed": 40,
+    "special_attack": 20,
+    "special_defense": 50,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "azumarill",
+    "type": [
+      "water",
+      "fairy"
+    ],
+    "hp": 100,
+    "base_exp": 210,
+    "attack": 50,
+    "defense": 80,
+    "speed": 50,
+    "special_attack": 60,
+    "special_defense": 80,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "sudowoodo",
+    "type": [
+      "rock"
+    ],
+    "hp": 70,
+    "base_exp": 144,
+    "attack": 100,
+    "defense": 115,
+    "speed": 30,
+    "special_attack": 30,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "politoed",
+    "type": [
+      "water"
+    ],
+    "hp": 90,
+    "base_exp": 250,
+    "attack": 75,
+    "defense": 75,
+    "speed": 70,
+    "special_attack": 90,
+    "special_defense": 100,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "hoppip",
+    "type": [
+      "grass",
+      "flying"
+    ],
+    "hp": 35,
+    "base_exp": 50,
+    "attack": 35,
+    "defense": 40,
+    "speed": 50,
+    "special_attack": 35,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "skiploom",
+    "type": [
+      "grass",
+      "flying"
+    ],
+    "hp": 55,
+    "base_exp": 119,
+    "attack": 45,
+    "defense": 50,
+    "speed": 80,
+    "special_attack": 45,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "jumpluff",
+    "type": [
+      "grass",
+      "flying"
+    ],
+    "hp": 75,
+    "base_exp": 207,
+    "attack": 55,
+    "defense": 70,
+    "speed": 110,
+    "special_attack": 55,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "aipom",
+    "type": [
+      "normal"
+    ],
+    "hp": 55,
+    "base_exp": 72,
+    "attack": 70,
+    "defense": 55,
+    "speed": 85,
+    "special_attack": 40,
+    "special_defense": 55,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "sunkern",
+    "type": [
+      "grass"
+    ],
+    "hp": 30,
+    "base_exp": 36,
+    "attack": 30,
+    "defense": 30,
+    "speed": 30,
+    "special_attack": 30,
+    "special_defense": 30,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "sunflora",
+    "type": [
+      "grass"
+    ],
+    "hp": 75,
+    "base_exp": 149,
+    "attack": 75,
+    "defense": 55,
+    "speed": 30,
+    "special_attack": 105,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "yanma",
+    "type": [
+      "bug",
+      "flying"
+    ],
+    "hp": 65,
+    "base_exp": 78,
+    "attack": 65,
+    "defense": 45,
+    "speed": 95,
+    "special_attack": 75,
+    "special_defense": 45,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "wooper",
+    "type": [
+      "water",
+      "ground"
+    ],
+    "hp": 55,
+    "base_exp": 42,
+    "attack": 45,
+    "defense": 45,
+    "speed": 15,
+    "special_attack": 25,
+    "special_defense": 25,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "quagsire",
+    "type": [
+      "water",
+      "ground"
+    ],
+    "hp": 95,
+    "base_exp": 151,
+    "attack": 85,
+    "defense": 85,
+    "speed": 35,
+    "special_attack": 65,
+    "special_defense": 65,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "espeon",
+    "type": [
+      "psychic"
+    ],
+    "hp": 65,
+    "base_exp": 184,
+    "attack": 65,
+    "defense": 60,
+    "speed": 110,
+    "special_attack": 130,
+    "special_defense": 95,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "umbreon",
+    "type": [
+      "dark"
+    ],
+    "hp": 95,
+    "base_exp": 184,
+    "attack": 65,
+    "defense": 110,
+    "speed": 65,
+    "special_attack": 60,
+    "special_defense": 130,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "murkrow",
+    "type": [
+      "dark",
+      "flying"
+    ],
+    "hp": 60,
+    "base_exp": 81,
+    "attack": 85,
+    "defense": 42,
+    "speed": 91,
+    "special_attack": 85,
+    "special_defense": 42,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "slowking",
+    "type": [
+      "water",
+      "psychic"
+    ],
+    "hp": 95,
+    "base_exp": 172,
+    "attack": 75,
+    "defense": 80,
+    "speed": 30,
+    "special_attack": 100,
+    "special_defense": 110,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
+  },
+  {
+    "name": "misdreavus",
+    "type": [
+      "ghost"
+    ],
+    "hp": 60,
+    "base_exp": 87,
+    "attack": 60,
+    "defense": 60,
+    "speed": 85,
+    "special_attack": 85,
+    "special_defense": 85,
+    "level": 1,
+    "accum_exp": 0,
+    "ev": 0.5,
+    "Owner": null
   }
 ]

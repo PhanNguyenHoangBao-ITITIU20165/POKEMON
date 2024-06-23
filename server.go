@@ -13,9 +13,24 @@ import (
     "strings"
     "sync"
     "time"
+    "io/ioutil"
 )
+// Player represents a player in the game world with their attributes and Pokémon collection.
+type Player struct {
+	ID       int
+	X, Y     int
+	Pokemons map[int]Pokemon // Map of Pokémon owned by the player
+	mutex    sync.Mutex // Mutex for synchronizing access to player data
+}
 
-var pokeworld *Pokeworld
+var (
+    pokeworld *Pokeworld
+	world       [][]*Player
+	worldMutex  sync.Mutex
+	playerID    int
+	playerMutex sync.Mutex
+	players     []*Player
+)
 
 const (
 	worldSizeX          = 1000
@@ -44,167 +59,40 @@ type Pokemon struct {
 
 
 type Pokeworld struct {
-    grid          [][]*Pokemon
-    players       map[net.Conn]*Client
-    pokedex       []Pokemon
-
-    Width         int
-    Height        int
-    PokemonSpawnRate   time.Duration 
-    PokemonDespawnTime time.Duration
-    PokemonPerSpawn int
-    // Terrain      [][]int // Example if terrain is added
-
-    rng          *rand.Rand
-    NextSpawn    time.Time
-    despawnTimers  map[*Pokemon]*time.Timer
-    TotalPokemon    int
-
-    sync.Mutex
+    grid               [][]*Pokemon     // Grid representing the game world
+    players            map[net.Conn]*Client // Map of active players
+    pokedex            []Pokemon        // List of all available Pokémon
+    Width, Height      int              // Dimensions of the game world
+    PokemonSpawnRate   time.Duration    // Rate at which Pokémon spawn
+    PokemonDespawnTime time.Duration    // Time after which Pokémon despawn
+    PokemonPerSpawn    int              // Number of Pokémon to spawn at once
+    rng                *rand.Rand       // Random number generator for spawning Pokémon
+    NextSpawn          time.Time        // Next time Pokémon will spawn
+    despawnTimers      map[*Pokemon]*time.Timer // Timers for despawning Pokémon
+    TotalPokemon       int              // Total number of Pokémon currently in the world
+    sync.Mutex                          // Mutex for synchronizing access to Pokeworld data
 }
-
-func fetchPokemonData(id int) (*Pokemon, error) {
-    resp, err := http.Get(fmt.Sprintf("https://pokeapi.co/api/v2/pokemon/%d/", id))
-    if err != nil {
-        return nil, err
-    }
-    defer resp.Body.Close()
-
-    var result map[string]interface{}
-    if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-        return nil, err
-    }
-
-    types := []string{}
-    for _, t := range result["types"].([]interface{}) {
-        typeName := t.(map[string]interface{})["type"].(map[string]interface{})["name"].(string)
-        types = append(types, typeName)
-    }
-
-    stats := make(map[string]int)
-    for _, s := range result["stats"].([]interface{}) {
-        statName := s.(map[string]interface{})["stat"].(map[string]interface{})["name"].(string)
-        statValue := int(s.(map[string]interface{})["base_stat"].(float64))
-        stats[statName] = statValue
-    }
-
-    pokemon := &Pokemon{
-        Name:           result["name"].(string),
-        Type:           types,
-        BaseExp:        int(result["base_experience"].(float64)),
-        HP:             stats["hp"],
-        Attack:         stats["attack"],
-        Defense:        stats["defense"],
-        Speed:          stats["speed"],
-        SpecialAttack:  stats["special-attack"],
-        SpecialDefense: stats["special-defense"],
-        Level:          1,
-        AccumExp:       0,
-        EV:             0.5, 
-    }
-
-    return pokemon, nil
-}
-
-func FetchAllPokemonData() {
-    var pokemons []Pokemon
-
-    for i := 1; i <= 100; i++ { // Fetch first 100 Pokémon
-        pokemon, err := fetchPokemonData(i)
-        if err != nil {
-            log.Printf("Error fetching data for Pokémon ID %d: %v", i, err)
-            continue
-        }
-        pokemons = append(pokemons, *pokemon)
-    }
-
-    jsonFile, err := os.Create("pokedex.json")
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer jsonFile.Close()
-
-    encoder := json.NewEncoder(jsonFile)
-    encoder.SetIndent("", "  ")
-    err = encoder.Encode(pokemons)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    fmt.Println("Pokédex successfully created!")
-}
-
-func calculateNormalDamage(attacker *Pokemon, defender *Pokemon) int {
-    if attacker == nil || defender == nil {
-        log.Println("Error in calculateNormalDamage: attacker or defender is nil")
-        return 0
-    }
-    damage := attacker.Attack - defender.Defense
-    if damage < 0 {
-        damage = 0
-    }
-    return damage
-}
-
-func calculateTypeEffectiveness(attackerType, defenderType string) float64 {
-    if defenderTypes, ok := typeChart[attackerType]; ok {
-        if multiplier, exists := defenderTypes[defenderType]; exists {
-            return multiplier
-        }
-    }
-    return 1.0 // Default effectiveness (no effect)
-}
-
-func calculateSpecialDamage(attacker, defender *Pokemon) int {
-    maxMultiplier := 1.0
-    for _, attackerType := range attacker.Type {
-        for _, defenderType := range defender.Type {
-            multiplier := calculateTypeEffectiveness(attackerType, defenderType)
-            if multiplier > maxMultiplier {
-                maxMultiplier = multiplier
-            }
-        }
-    }
-    damage := int(float64(attacker.SpecialAttack)*maxMultiplier - float64(defender.SpecialDefense))
-    if damage < 0 {
-        damage = 0
-    }
-    return damage
-}
-
 
 type Client struct {
-    conn          net.Conn
-    team          []*Pokemon
-    isActive      bool
-    activePokemon *Pokemon
-    reader        *bufio.Reader
-    X, Y           int
-    AutoMode       bool
-    AutoUntil      time.Time
-    Reader         *bufio.Reader
-    sync.Mutex
+    conn          net.Conn       // Connection object for the client
+    team          []*Pokemon     // Team of Pokémon selected by the client
+    isActive      bool           // Indicates if the client is actively participating in a battle
+    activePokemon *Pokemon       // Active Pokémon selected for battle
+    reader        *bufio.Reader  // Reader for reading input from the client
+    X, Y          int            // Coordinates of the client in the game world
+    AutoMode      bool           // Indicates if the client is in auto mode
+    AutoUntil     time.Time      // Time until which auto mode is active
+    sync.Mutex                   // Mutex for synchronizing access to client data
 }
 
+// TypeEffectiveness represents the effectiveness multiplier of one type against another.
 type TypeEffectiveness struct {
     AttackingType string  `json:"attacking_type"`
     DefendingType string  `json:"defending_type"`
     Multiplier    float64 `json:"multiplier"`
 }
 
-type Player struct {
-    Conn         net.Conn
-    ID           string
-    X, Y         int
-    Team         []*Pokemon
-    Reader       *bufio.Reader
-    AutoMode     bool
-    AutoDuration time.Duration
-    StartTime    time.Time
-    sync.Mutex
-}
-
-// Type chart as a nested map for faster lookup
+// typeChart represents the effectiveness chart of Pokémon types against each other.
 var typeChart = map[string]map[string]float64{
     "Normal": {
         "Rock": 0.5, "Ghost": 0.0, "Steel": 0.5,
@@ -279,7 +167,88 @@ var typeChart = map[string]map[string]float64{
         "Dark": 2.0, "Steel": 0.5,
     },
 }
+//Pokedex
+// fetchPokemonData fetches Pokemon data from the PokeAPI for the given ID.
+func fetchPokemonData(id int) (*Pokemon, error) {
+    // Construct the PokeAPI URL using the provided Pokemon ID.
+    resp, err := http.Get(fmt.Sprintf("https://pokeapi.co/api/v2/pokemon/%d/", id))
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
 
+    // Create a generic map to store the raw JSON data.
+    var result map[string]interface{}
+    if err := json.NewDecoder(resp.Body).Decode(&result); err != nil { // Decode the JSON response into the 'result' map.
+        return nil, err
+    }
+
+    // Extract and process types from the JSON response.
+    types := []string{}
+    for _, t := range result["types"].([]interface{}) {
+        typeName := t.(map[string]interface{})["type"].(map[string]interface{})["name"].(string)
+        types = append(types, typeName)
+    }
+
+    // Extract and process base stats from the JSON response.
+    stats := make(map[string]int)
+    for _, s := range result["stats"].([]interface{}) {
+        statName := s.(map[string]interface{})["stat"].(map[string]interface{})["name"].(string)
+        statValue := int(s.(map[string]interface{})["base_stat"].(float64))
+        stats[statName] = statValue
+    }
+
+    // Create a Pokemon struct and populate its fields with extracted data.
+    pokemon := &Pokemon{
+        Name:           result["name"].(string),
+        Type:           types,
+        BaseExp:        int(result["base_experience"].(float64)),
+        HP:             stats["hp"],
+        Attack:         stats["attack"],
+        Defense:        stats["defense"],
+        Speed:          stats["speed"],
+        SpecialAttack:  stats["special-attack"],
+        SpecialDefense: stats["special-defense"],
+        Level:          1,
+        AccumExp:       0,
+        EV:             0.5, 
+    }
+
+    return pokemon, nil
+}
+
+func FetchAllPokemonData() {
+    var pokemons []Pokemon // Create a slice to store all Pokémon data.
+
+    for i := 1; i <= 200; i++ { // Fetch first 200 Pokémon
+        pokemon, err := fetchPokemonData(i)
+        if err != nil {
+            log.Printf("Error fetching data for Pokémon ID %d: %v", i, err)
+            continue
+        }
+        pokemons = append(pokemons, *pokemon)
+    }
+
+    // Create the JSON file.
+    jsonFile, err := os.Create("pokedex.json")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer jsonFile.Close()
+
+    // Create a JSON encoder with indentation for readability.
+    encoder := json.NewEncoder(jsonFile)
+    encoder.SetIndent("", "  ")
+    err = encoder.Encode(pokemons)
+    // Encode the Pokémon data into the JSON file.
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println("Pokédex successfully created!")
+}
+
+//Pokecat
 func (pw *Pokeworld) spawnPokemonLoop() {
     for {
         time.Sleep(pokemonSpawnRate) // Spawn every minute
@@ -287,22 +256,29 @@ func (pw *Pokeworld) spawnPokemonLoop() {
     }
 }
 
+// spawnPokemon generates new Pokémon in the Pokeworld.
 func (pw *Pokeworld) spawnPokemon(numPokemon int) {
+    // Ensure exclusive access to the Pokeworld during spawning.
     pw.Lock()
     defer pw.Unlock()
 
+    // Loop to spawn the specified number of Pokemon (up to the world limit of 50).
     for i := 0; i < numPokemon && pw.TotalPokemon < 50; i++ {
+        // Generate random coordinates within the world.
         x, y := rand.Intn(worldSizeX), rand.Intn(worldSizeY)
-        var pokemon *Pokemon // Declare pokemon here
+        var pokemon *Pokemon
 
-        if pw.grid[x][y] == nil { 
-            pokemonIndex := rand.Intn(len(pw.pokedex))
+        // Check if the grid cell is empty.
+        if pw.grid[x][y] == nil {
+            // Randomly select a Pokemon from the pokedex. 
+            pokemonIndex := rand.Intn(len(pw.pokedex)) // Assign the selected Pokémon
             pokemon = &pw.pokedex[pokemonIndex] 
+            // Set random level and EV for the Pokemon.
             pokemon.Level = rand.Intn(100) + 1
             pokemon.EV = rand.Float64()*0.5 + 0.5
             pw.grid[x][y] = pokemon
 
-            // ... (start a timer for despawning this Pokémon)
+            //start a timer for despawning this Pokémon
             despawnTimer := time.AfterFunc(pw.PokemonDespawnTime, func() {
                 pw.Lock()
                 defer pw.Unlock()
@@ -319,203 +295,166 @@ func (pw *Pokeworld) spawnPokemon(numPokemon int) {
     }
 }
 
+// addPlayer creates a new player at the specified coordinates (x, y), 
+// adds them to the global player list, and places them in the game world.
+// It returns a pointer to the newly created player.
+func addPlayer(x, y int) *Player {
+    // Ensure exclusive access to the player list while modifying it.
+	playerMutex.Lock()
+	defer playerMutex.Unlock() // Unlock when the function exits.
 
-func (pw *Pokeworld) handlePlayer(conn net.Conn) {
-    defer conn.Close()
+	playerID++
+    // Create a new Player struct with the assigned ID, position, and empty Pokemons map.
+	player := &Player{
+		ID:       playerID,
+		X:        x,
+		Y:        y,
+		Pokemons: make(map[int]Pokemon),
+	}
 
-    client := &Client{
-        conn:   conn,
-        X:      rand.Intn(worldSizeX), 
-        Y:      rand.Intn(worldSizeY),
-        Reader: bufio.NewReader(conn),
+	players = append(players, player) // Add the player to the global slice of players.
+	worldMutex.Lock() // Ensure exclusive access to the game world while placing the player.
+	world[x][y] = player //Update the game world grid to place the player at the specified location.
+	worldMutex.Unlock()
+
+	return player
+}
+
+func handlePlayerMovement(player *Player, direction string) {
+	player.mutex.Lock()
+	defer player.mutex.Unlock()
+
+	worldSize := len(world) // Get world dimensions
+
+	// Store original position (for potential reset due to out-of-bounds)
+	originalX, originalY := player.X, player.Y
+
+	switch direction {
+	case "up":
+		player.Y = (player.Y - 1 + worldSize) % worldSize // Wrap around if at top edge
+	case "down":
+		player.Y = (player.Y + 1) % worldSize // Wrap around if at bottom edge
+	case "left":
+		player.X = (player.X - 1 + worldSize) % worldSize // Wrap around if at left edge
+	case "right":
+		player.X = (player.X + 1) % worldSize // Wrap around if at right edge
+	default:
+		return // Invalid direction, do nothing
+	}
+
+	// Check if new position is already occupied by another player
+	worldMutex.Lock()
+	if world[player.X][player.Y] != nil && len(world[player.X][player.Y].Pokemons) == 0 {
+		// Reset to original position if occupied
+		player.X, player.Y = originalX, originalY
+		worldMutex.Unlock()
+		return
+	}
+
+	// Update world
+	world[originalX][originalY] = nil
+	world[player.X][player.Y] = player
+	worldMutex.Unlock()
+
+	// Check for Pokemon encounter
+	if pokemon := world[player.X][player.Y]; pokemon != nil && len(pokemon.Pokemons) > 0 {
+		handleEncounter(player, pokemon)
+	}
+}
+
+func movePlayer(player *Player, direction string) {
+	handlePlayerMovement(player, direction)
+}
+
+func handleEncounter(player *Player, pokemon *Player) {
+	player.mutex.Lock()
+	defer player.mutex.Unlock()
+
+	worldMutex.Lock()
+	defer worldMutex.Unlock()
+
+	if len(player.Pokemons) < 200 {
+		// Auto-capture
+		for pokemonId, pokemonData := range pokemon.Pokemons {
+			player.Pokemons[pokemonId] = pokemonData
+		}
+		world[player.X][player.Y] = nil // Remove from world
+
+		// Save player data (update their file)
+		saveData(player, fmt.Sprintf("player_data/player%d_data.json", player.ID))
+	}
+}
+
+func generateRandomEVs() []float64 {
+	EVs := make([]float64, 6)
+	for i := range EVs {
+		EVs[i] = rand.Float64()*(1-0.5) + 0.5
+	}
+	return EVs
+}
+
+// Save player data
+func saveData(player *Player, filename string) {
+	data, _ := json.MarshalIndent(player, "", "  ")
+	_ = ioutil.WriteFile(filename, data, 0644)
+}
+
+// Additional helper functions
+func getAllPlayers() []*Player {
+	worldMutex.Lock()
+	defer worldMutex.Unlock()
+	return players
+}
+
+func randomDirection() string {
+	directions := []string{"up", "down", "left", "right"}
+	return directions[rand.Intn(len(directions))]
+}
+
+//Pokebat
+func calculateNormalDamage(attacker *Pokemon, defender *Pokemon) int {
+    if attacker == nil || defender == nil {
+        log.Println("Error in calculateNormalDamage: attacker or defender is nil")
+        return 0
     }
-
-    // Choose team logic (same as before)
-
-    pw.Lock()
-    pw.players[conn] = client
-    pw.Unlock()
-
-    for {
-        // Handle Player Input for Movement
-        fmt.Fprintln(conn, "Enter direction (up/down/left/right/auto [duration in seconds]):")
-        input, err := client.Reader.ReadString('\n')
-        if err != nil {
-            log.Println("Error reading from client:", err)
-            return
-        }
-        input = strings.TrimSpace(input)
-
-        client.Lock()
-        pw.Lock() // Lock to ensure thread safety
-
-        switch input {
-        case "up":
-            if client.Y > 0 {
-                client.Y--
-            }
-        case "down":
-            if client.Y < worldSizeY-1 {
-                client.Y++
-            }
-        case "left":
-            if client.X > 0 {
-                client.X--
-            }
-        case "right":
-            if client.X < worldSizeX-1 {
-                client.X++
-            }
-        case "auto": // Toggle auto mode
-            parts := strings.Split(input, " ")
-            if len(parts) > 1 {
-                duration, _ := strconv.Atoi(parts[1])
-                if duration > 0 {
-                    client.AutoMode = !client.AutoMode // Toggle
-                    if client.AutoMode {
-                        client.AutoUntil = time.Now().Add(time.Duration(duration) * time.Second)
-                    }
-                }
-            }
-        }
-
-        var capturedPokemon *Pokemon // Declare outside the if statement
-        client.Lock()
-        pw.Lock() 
-        // Check for Pokemon Capture
-        if pokemon := pw.grid[client.X][client.Y]; pokemon != nil && len(client.team) < maxPokemonPerPlayer {
-            client.team = append(client.team, pokemon)
-            pw.grid[client.X][client.Y] = nil
-            pw.TotalPokemon--
-            
-            // Stop despawn timer
-            despawnTimer := pw.despawnTimers[pokemon]
-            delete(pw.despawnTimers, pokemon)
-            if despawnTimer != nil {
-                despawnTimer.Stop()
-            }
-            fmt.Fprintf(conn, "You caught a %s!\n", pokemon.Name)
-                
-            // ... (Notify the player that they caught a Pokemon)
-        }
-
-        // Check for Battles (Add more logic here)
-        for otherConn, otherClient := range pw.players {
-            if otherConn != conn && otherClient.X == client.X && otherClient.Y == client.Y {
-                pw.handleBattle(client, otherClient)
-                fmt.Fprintln(conn, "You encountered another player! Battle starting...")
-                fmt.Fprintln(otherConn, "You encountered another player! Battle starting...")
-                // ... (battle logic)
-            }
-        }
-
-        // Auto-Mode Logic
-        if client.AutoMode && time.Now().Before(client.AutoUntil) {
-            // Move randomly
-            directions := []string{"up", "down", "left", "right"}
-            randomDirection := directions[rand.Intn(len(directions))]
-            fmt.Fprintln(conn, "Auto move:", randomDirection) // Notify the player
-            // ... (update client.X and client.Y based on randomDirection)
-        } else if client.AutoMode { // Time's up, disable auto mode
-            client.AutoMode = false
-            fmt.Fprintln(conn, "Auto mode disabled")
-        }
-        
-        if capturedPokemon = pw.grid[client.X][client.Y]; capturedPokemon != nil {
-            client.team = append(client.team, capturedPokemon)
-            pw.grid[client.X][client.Y] = nil
-            pw.TotalPokemon--
-
-            // ... (stop despawn timer)
-
-            fmt.Fprintf(conn, "(Auto) You caught a %s!\n", capturedPokemon.Name) 
-        }
-        
-        pw.Unlock()
-        client.Unlock()
-
-        // Save Player Data (update JSON)
-        // ... (save client.Team and other data to the player's JSON file)
+    damage := attacker.Attack - defender.Defense
+    if damage < 0 {
+        damage = 0
     }
+    return damage
 }
 
-func (pw *Pokeworld) handleBattle(client1, client2 *Client) {
-    fmt.Println("Battle between:", client1.conn.RemoteAddr(), "and", client2.conn.RemoteAddr())
-
-    // 1. Choose Active Pokémon
-    client1Active := client1.chooseActivePokemon()
-    client1Active.Owner = client1 // Set the owner for the active Pokemon
-    client2Active := client2.chooseActivePokemon()
-    client2Active.Owner = client2
-
-    // 2. Battle Loop
-    for client1Active != nil && client2Active != nil {
-        // Determine who goes first based on Speed
-        attacker, defender := client1Active, client2Active
-        if client2Active.Speed > client1Active.Speed {
-            attacker, defender = client2Active, client1Active
-        }
-
-        // Attacker's Turn
-        attackChoice := attacker.Owner.chooseAttack()
-        damage := attacker.calculateDamage(defender, attackChoice)
-        defender.HP -= damage
-
-        // Check if Defender Fainted
-        if defender.HP <= 0 {
-            fmt.Fprintf(defender.Owner.conn, "Your %s fainted!\n", defender.Name)
-            defender = defender.Owner.chooseActivePokemon() // Choose a new Pokémon
-        }
-
-        // Switch Attacker and Defender for next turn
-        attacker, defender = defender, attacker 
-    }
-
-    // 3. Determine Winner and Update Experience
-    if client1Active == nil {
-        pw.announceWinner(client2, client1)
-        client2.updateExperience(client1Active, true) // Winner gains experience
-    } else {
-        pw.announceWinner(client1, client2)
-        client1.updateExperience(client2Active, true)
-    }
-}
-
-func (c *Client) chooseActivePokemon() *Pokemon {
-    return nil // Placeholder
-}
-
-func (c *Client) chooseAttack() int {
-    return 0 // Placeholder
-}
-
-func (p *Pokemon) calculateDamage(defender *Pokemon, attackChoice int) int {
-
-    return 0 // Placeholder
-}
-
-func (pw *Pokeworld) announceWinner(winner, loser *Client) {
-    fmt.Fprintf(winner.conn, "You win the battle!\n")
-    fmt.Fprintf(loser.conn, "You lose the battle!\n")
-}
-
-func (c *Client) updateExperience(defeatedPokemon *Pokemon, isWinner bool) {
-
-}
-
-
-func getNextActivePokemon(client *Client) *Pokemon {
-    for _, p := range client.team {
-        if p.HP > 0 {
-            return p
+func calculateTypeEffectiveness(attackerType, defenderType string) float64 {
+    if defenderTypes, ok := typeChart[attackerType]; ok {
+        if multiplier, exists := defenderTypes[defenderType]; exists {
+            return multiplier
         }
     }
-    return nil
+    return 1.0 // Default effectiveness (no effect)
 }
 
+func calculateSpecialDamage(attacker, defender *Pokemon) int {
+    maxMultiplier := 1.0
+    for _, attackerType := range attacker.Type {
+        for _, defenderType := range defender.Type {
+            multiplier := calculateTypeEffectiveness(attackerType, defenderType)
+            if multiplier > maxMultiplier {
+                maxMultiplier = multiplier
+            }
+        }
+    }
+    damage := int(float64(attacker.SpecialAttack)*maxMultiplier - float64(defender.SpecialDefense))
+    if damage < 0 {
+        damage = 0
+    }
+    return damage
+}
+
+// handleConnection manages a single client connection in the Pokémon battle.
 func handleConnection(conn net.Conn, pokedex []Pokemon, clients map[net.Conn]*Client, done chan struct{}) {
     defer conn.Close()
 
+    // Create a new client struct for the connection and add to the clients map.
     client := &Client{conn: conn, isActive: false, reader: bufio.NewReader(conn)}
     clients[conn] = client
 
@@ -524,15 +463,17 @@ func handleConnection(conn net.Conn, pokedex []Pokemon, clients map[net.Conn]*Cl
     for i, p := range pokedex {
         fmt.Fprintf(conn, "%d. %s (%v)\n", i+1, p.Name, p.Type)
     }
+    // Loop to get the player's team choices.
     for i := 0; i < 3; i++ {
         fmt.Fprint(conn, "Enter number for Pokémon: ")
-        input, err := client.reader.ReadString('\n')
+        input, err := client.reader.ReadString('\n') // Read the player's choice.
         if err != nil {
             fmt.Println("Error reading from client:", err)
             return
         }
         input = strings.TrimSpace(input)
 
+        // Convert input to integer and validate the choice.
         choice, err := strconv.Atoi(input)
         if err != nil || choice < 1 || choice > len(pokedex) {
             fmt.Fprintln(conn, "Invalid choice. Try again.")
@@ -540,12 +481,15 @@ func handleConnection(conn net.Conn, pokedex []Pokemon, clients map[net.Conn]*Cl
             continue
         }
 
+        // Add the chosen Pokémon to the client's team.
         client.team = append(client.team, &pokedex[choice-1])
     }
 
+    // Notify the main server that a client is ready (using the 'done' channel).
     done <- struct{}{}
 
     for {
+        // Check if it's this client's turn and if they have Pokémon remaining.
         if client.isActive && len(client.team) > 0 {
             reader := bufio.NewReader(conn)
             activePokemon := client.team[0]
@@ -616,7 +560,7 @@ func handleConnection(conn net.Conn, pokedex []Pokemon, clients map[net.Conn]*Cl
         } else {
             // Wait for your turn
             fmt.Fprintln(conn, "Waiting for your turn...")
-            time.Sleep(3 * time.Second) // Adjust wait time as needed
+            time.Sleep(4 * time.Second) // Adjust wait time as needed
         }
     }
 
@@ -631,32 +575,18 @@ func main() {
     rand.Seed(time.Now().UnixNano())
     FetchAllPokemonData()
 
+    // Open the saved Pokedex data from the JSON file.
     pokedexFile, err := os.Open("pokedex.json")
     if err != nil {
         log.Fatalf("Error opening pokedex.json: %v", err)
     }
     defer pokedexFile.Close()
 
+    // Decode the JSON data into a slice of Pokemon structs.
     var pokedex []Pokemon
     if err := json.NewDecoder(pokedexFile).Decode(&pokedex); err != nil {
         log.Fatalf("Error decoding pokedex.json: %v", err)
     }
-
-    pokeworld := &Pokeworld{
-        grid:    make([][]*Pokemon, worldSizeX), // Initialize the grid
-        players: make(map[net.Conn]*Client),
-        pokedex: pokedex,
-        Width:  1000,
-        Height: 1000,
-        rng:     rand.New(rand.NewSource(time.Now().UnixNano())), // Seed the RNG
-        NextSpawn: time.Now().Add(pokeworld.PokemonSpawnRate), // First spawn time
-        despawnTimers: make(map[*Pokemon]*time.Timer),
-    }
-    for i := range pokeworld.grid {
-        pokeworld.grid[i] = make([]*Pokemon, worldSizeY)
-    }
-
-    go pokeworld.spawnPokemonLoop() // Start Pokémon spawning loop
 
     listener, err := net.Listen("tcp", ":8080")
     if err != nil {
@@ -669,6 +599,7 @@ func main() {
     var player1Conn, player2Conn net.Conn
     clients := make(map[net.Conn]*Client)
 
+    // Wait for two players to connect.
     for {
         conn, err := listener.Accept()
         if err != nil {
@@ -676,8 +607,9 @@ func main() {
             continue
         }
 
-        go pokeworld.handlePlayer(conn)
+        //go pokeworld.handlePlayer(conn)
 
+        //Assign connection to player1 or player2
         if player1Conn == nil {
             fmt.Println("Player 1 connected!")
             player1Conn = conn
@@ -688,12 +620,14 @@ func main() {
         }
     }
 
+    //Channel to signal when both players are ready to start.
     done := make(chan struct{}, 2)
 
+    // Start handling connections for both players concurrently.
     go handleConnection(player1Conn, pokedex, clients, done)
     go handleConnection(player2Conn, pokedex, clients, done)
 
-    <-done
+    <-done // Wait for both players to be ready before starting the battle.
     <-done
 
     fmt.Println("Both players are ready! Let the battle begin!")
